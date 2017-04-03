@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -10,7 +11,6 @@ public class Hamming {
         
         int tamanho = 7; //Gerar o tamanho da mensagem
         
-<<<<<<< HEAD
         ArrayList<Integer> mensagem = new ArrayList<Integer>(); //Cria um ArrayList para a mensagem
         for (int i = 0; i < tamanho; i++) {
             mensagem.add(gerador.nextInt(2)); //Carrega o ArrayList aleatoriamente com 0s ou 1s
@@ -25,23 +25,10 @@ public class Hamming {
         ArrayList<Integer> hamming = BitsRedundanciaNasPosicoes(mensagem, tamanho); //ArrayList para colocar a mensagem e a paridade
         
         System.out.println("Mensagem com a bits de paridade (2) na suas posições:");
-        System.out.println(hamming.toString());                        
-=======
-        int mensagem[] = new int [tamanho]; //Cria um vetor para a mensagem
-        for (int i = 0; i < mensagem.length; i++) {
-            mensagem[i] = gerador.nextInt(2); //Carrega o vetor aleatoriamente com 0s ou 1s
-        }
+        System.out.println(hamming.toString());             
         
-        int quatBitsParidade = BitsParidade(tamanho); //Determina a quantidade de bits de paridade necessarios para a mensagem
-        
-        int bitsParidade[] = new int[quatBitsParidade]; //Vetor para colocar os bits de paridade
-        int hamming[] = new int[tamanho + quatBitsParidade]; //Vetor para a mensagem e a paridade
-        
-        
->>>>>>> parent of 09327f9... Adição das paridades para R1 e R2
-        
-        
-<<<<<<< HEAD
+        hamming = CalculaParidadeR1(mensagem);
+
         System.out.println("Mensagem com a paridade correta na posição 0:");
         System.out.println(hamming.toString());
         
@@ -54,9 +41,6 @@ public class Hamming {
         
         System.out.println("Mensagem com a paridade correta na posição 3:");
         System.out.println(hamming.toString());
-=======
-        
->>>>>>> parent of 09327f9... Adição das paridades para R1 e R2
         
         hamming = CalculaParidadeR4(mensagem);
         
@@ -75,8 +59,7 @@ public class Hamming {
     public void Receptor(ArrayList hamming) {
         
     }
-    
-<<<<<<< HEAD
+
     public ArrayList Inverso (ArrayList<Integer> hamming) { //Método para inverter o vetor e coloca-lo da direita para esquerda
         int tamanho = hamming.size();
         ArrayList<Integer> inverso = new ArrayList<Integer>(tamanho);
@@ -180,11 +163,12 @@ public class Hamming {
         mensagem.add(1,2);
         mensagem.add(3,2);
         mensagem.add(7,2);
-=======
-    public int BitsParidade(int tamanho){        
-        int r = 1;
->>>>>>> parent of 09327f9... Adição das paridades para R1 e R2
         
+        return mensagem;
+    }
+
+    public int CalculaQtdBitsParidade(int tamanho){        
+        int r = 1;
         while ( Math.pow(2, r) < tamanho + r + 1) {
             r++;
         }
